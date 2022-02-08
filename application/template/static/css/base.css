@@ -522,3 +522,66 @@ body {
         float: left;
 	}
 }
+
+
+
+/* features section */
+
+
+
+.grid {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 15vh;
+    align-items: stretch;
+}
+
+.grid > article {
+    border: 1.5px solid #ccc;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    text-align: center;
+
+}
+
+.grid > article i {
+    font-size: 10vh;
+    line-height: 18vh;
+    height: 18vh;
+    width: 18vh;
+    border: 0.1vw solid #007bff;
+    border-radius: 50%;
+    background-color: #ffffff;
+    text-align: center;
+    color: #007bff;
+    margin-top: -10vh;
+}
+
+
+.grid > article i:hover {
+    border: 0.1vw solid #ffffff;
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+
+
+
+
+.grid .text {
+    padding: 10px 20px 30px;
+}
+
+.grid {
+    margin-top: 20px;
+}
+
+.header{
+    font-size: 5vh;
+}
+
+
+.para {
+    font-size: 3vh;
+}

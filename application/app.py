@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jan 24 23:20:22 2022
-"""
-"""
-@author: deepspraj
-"""
-
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from random import randint
 
