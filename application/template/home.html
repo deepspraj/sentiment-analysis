@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block content %}
+<div class="centeralpart">
+    <ul>
+        <li>
+            <div class="textualpart">
+                <p class="heading">Sentiment Analysis</p>
+                <p class="description">Categorize tweet under Positive, Neutral or Negative</p>
+                <br>
+                <div class="emoji">
+                    <ul>
+                        <li class="happy"><i class="fas fa-smile" aria-hidden="true"></i></li>
+                        <li class="neutral"><i class="fas fa-meh" aria-hidden="true"></i></li>
+                        <li class="sad"><i class="fas fa-frown" aria-hidden="true"></i></li>
+                    </ul>
+                </div>
+                <br>
+                <br>
+                <br>
+                <input type="text" id="ip2" />
+            </div>
+        </li>
+        <li>
+            <div class="logopart">
+                <p><i class="fab fa-twitter"></i></p>
+            </div>
+        </li>
+    </ul>
+</div>
+
+{% endblock %}

@@ -1,129 +1,103 @@
 <html>
-  <head>
-<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-<link href='static/css/base.css' rel='stylesheet'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href='static/css/base.css' rel='stylesheet'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
 </head>
+
 <body>
-  <nav class="nav">
-    <div class="container">
-        <div class="logo">
-            <a href="#" id="home">HOME</a>
-        </div>
-        <div id="mainListDiv" class="main_list">
-            <ul class="navlinks">
-                <li><a href="#" id="sentiment">Sentiment Analysis</a></li>
-                <li><a href="#" id ="emotion">Emotion Analysis</a></li>
-            </ul>
-        </div>
-        <span class="navTrigger">
+    <nav class="nav">
+        <div class="container">
+            <div class="logo">
+                <a href="{{url_for('home')}}" id="home">HOME</a>
+            </div>
+            <div id="mainListDiv" class="main_list">
+                <ul class="navlinks">
+                    <li><a href="{{url_for('home') }}" id="sentiment">Sentiment Analysis</a></li>
+                    <li><a href="{{url_for('emotional')}}" id="emotion">Emotion Analysis</a></li>
+                </ul>
+            </div>
+            <span class="navTrigger">
             <i id="1bar"></i>
             <i id="2bar"></i>
             <i id="3bar"></i>
         </span>
+        </div>
+    </nav>
+
+    <section class="home">
+
+        {% block content %} {% endblock %}
+
+    </section>
+
+    <h2 class="myH2">Services</h2>
+
+    <br>
+    <div class="container">
+        <main class="grid">
+            <article>
+                <a href=""><i class="fas fa-cloud-download-alt"></i></a>
+                <div class="text">
+                    <h3 class="header">Import Live Tweets</h3>
+                    <p class="para">You can import live tweets by using targets twitter handle and last 10 tweets will perform sentiment analysis.</p>
+                </div>
+            </article>
+            <article>
+                <a href=""><i class="fas fa-chart-line"></i></a>
+                <div class="text">
+                    <h3 class="header">Import Live Hashtags</h3>
+                    <p class="para">You can import live top 5 trending hashtag's and every hashtag's 5 latest tweet will perform sentiment analysis.</p>
+                </div>
+            </article>
+            <article>
+                <a href=""><i class="far fa-keyboard"></i></a>
+                <div class="text">
+                    <h3 class="header">Type Your Own Tweet</h3>
+                    <p class="para">You can enter your own tweet in raw format and perform sentiment analysis</p>
+                </div>
+            </article>
+            <article>
+                <a href=""><i class="fas fa-volume-up"></i></a>
+                <div class="text">
+                    <h3 class="header">Audio as Input</h3>
+                    <p class="para">You can record audio here and perform sentiment analysis.</p>
+                </div>
+            </article>
+            <article>
+                <a href=""><i class="fas fa-upload"></i></a>
+                <div class="text">
+                    <h3 class="header">Upload Your Audio</h3>
+                    <p class="para">You can upload audio (not more than 10 sec) and perform sentiment analysis.</p>
+                </div>
+            </article>
+        </main>
     </div>
-</nav>
 
 
-<section class="home">
-  <div class="centeralpart">
-    <ul>
-      <li>
-        <div class="textualpart">
-          <p class="heading">Sentiment Analysis</p>
-          <p class="description">Categorize tweet under Positive, Neutral or Negative</p>
-          <br>
-          <div class="emoji">
-            <ul>
-              <li class="happy"><i class="fas fa-smile" aria-hidden="true"></i></li>
-              <li class="neutral"><i class="fas fa-meh" aria-hidden="true"></i></li>
-              <li class="sad"><i class="fas fa-frown" aria-hidden="true"></i></li>
-            </ul>
-        </div>
+
+    <div class="page2">
+        <!-- just to make scrolling effect possible -->
+        <h2 class="myH2">What is this ?</h2>
+        <p class="myP">This is mini project based on NLP (Natural Language Processing).</p>
+        <p class="myP">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis
+            placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem
+            aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+        </p>
+        <p class="myP">I hope you will find usefull.</p>
+        <p class="myP">- Deepak Prajapati</p>
         <br>
         <br>
         <br>
-        <input type="text" id="ip2"/>
-        </div>
-      </li>
-      <li><div class="logopart">
-        <p><i class="fab fa-twitter"></i></p>
-      </div>
-    </li>
-  </ul>
-  </div>
+        <br>
+        <p class="myP">If you liked then please give star on my github handle.</p>
 
-  
-<!-- <p><i class="fa fa-twitter" aria-hidden="true"></i></p> -->
-</section>
-
-
-<!-- features section -->
-<h2 class="myH2">Services</h2>
-
-<br>
-<div class="container">
-  <main class="grid">
-    <article>
-      <a href=""><i class="fas fa-cloud-download-alt"></i></a>
-      <div class="text">
-        <h3 class="header">Import Live Tweets</h3>
-        <p class="para">You can import live tweets by using targets twitter handle and last 10 tweets will perform sentiment analysis.</p>
-      </div>
-    </article>
-    <article>
-      <a href=""><i class="fas fa-chart-line"></i></a>
-      <div class="text">
-        <h3 class="header">Import Live Hashtags</h3>
-        <p class="para">You can import live top 5 trending hashtag's and every hashtag's 5 latest tweet will perform sentiment analysis.</p>
-      </div>
-    </article>
-    <article>
-      <a href=""><i class="far fa-keyboard"></i></a>
-      <div class="text">
-        <h3 class="header">Type Your Own Tweet</h3>
-        <p class="para">You can enter your own tweet in raw format and perform sentiment analysis</p>
-      </div>
-    </article>
-    <article>
-      <a href=""><i class="fas fa-volume-up"></i></a>
-      <div class="text">
-        <h3 class="header">Audio as Input</h3>
-        <p class="para">You can record audio here and perform sentiment analysis.</p>
-      </div>
-    </article>
-    <article>
-      <a href=""><i class="fas fa-upload"></i></a>
-      <div class="text">
-        <h3 class="header">Upload Your Audio</h3>
-        <p class="para">You can upload audio (not more than 10 sec) and perform sentiment analysis.</p>
-      </div>
-    </article>
-  </main>
-</div>
-
-
-
-<div class="page2">
-    <!-- just to make scrolling effect possible -->
-  <h2 class="myH2">What is this ?</h2>
-  <p class="myP">This is mini project based on NLP (Natural Language Processing).</p>
-    <p class="myP">
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
-  </p>
-  <p class="myP">I hope you will find usefull.</p>
-  <p class="myP">- Deepak Prajapati</p>
-  <br>
-  <br>
-  <br>
-  <br>
-  <p class="myP">If you liked then please give star on my github handle.</p>
-
-</div>
+    </div>
     <script src="static/js/jquery-3.6.0.min.js"></script>
     <script start src="static/js/base.js"></script>
 </body>
+
 </html>

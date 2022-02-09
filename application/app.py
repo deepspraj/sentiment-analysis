@@ -5,7 +5,13 @@ app = Flask(__name__, template_folder='template', static_folder='template/static
 
 @app.route("/")
 def home():
-    return render_template("base.html", image = '')
+    return render_template("home.html")
+
+
+@app.route("/emotionalanalysis")
+def emotional():
+    return render_template("emotion.html", image = '')
+
 
 @app.route("/", methods = ['POST'])
 def predict():
