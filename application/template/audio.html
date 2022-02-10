@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block content %}
+<div class="centeralpart">
+    <ul>
+        <li>
+            <div class="textualpart">
+                <p class="heading">Sentiment Analysis using Audio</p>
+                <p class="description"></p>
+                <br>
+                <div class="emotion emoji">
+                    <br>
+                    <div class="recorder_wrapper">
+                        <div class="recorder">
+                            <button class="record_btn" id="button"><i class="fas fa-microphone"></i></button>
+                            <p id="msg_box"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </li>
+        <li>
+            <div class="logopart">
+                <div id="bars"></div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+{% endblock %}

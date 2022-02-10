@@ -10,8 +10,24 @@ def home():
 
 @app.route("/emotionalanalysis")
 def emotional():
-    return render_template("emotion.html", image = '')
+    return render_template("emotion.html")
 
+
+@app.route("/audio")
+def audio():
+    return render_template("audio.html")
+
+@app.route("/audioupload")
+def audioupload():
+    return render_template("audioupload.html")
+
+@app.route("/twitterhandle")
+def twitterhandle():
+    return render_template("twitterhandle.html")
+
+@app.route("/twitterhashtags")
+def twitterhashtags():
+    return render_template("twitterhashtags.html")
 
 @app.route("/", methods = ['POST'])
 def predict():
