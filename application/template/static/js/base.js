@@ -1,81 +1,77 @@
-var dropFileForm = document.getElementById("dropFileForm");
-var fileLabelText = document.getElementById("fileLabelText");
-var uploadStatus = document.getElementById("uploadStatus");
-var fileInput = document.getElementById("fileInput");
-var predictions = document.getElementById("predictions");
-var validFile = false;
-var droppedFiles;
+var form = document.getElementById("form");
+var text = document.getElementById("sech_txt_inpt");
+var happy = document.getElementById('happy');
+var neutral = document.getElementById('neutral');
+var sad = document.getElementById('sad');
+var sentiment = document.getElementById('predictedSentiment');
+
 
 function overrideDefault(event) {
   event.preventDefault();
   event.stopPropagation();
 }
 
-function fileHover() {
-  dropFileForm.classList.add("fileHover");
-}
-
-function fileHoverEnd() {
-  dropFileForm.classList.remove("fileHover");
-}
-
-function addFiles(event) {
-  droppedFiles = event.target.files || event.dataTransfer.files;
-  showFiles(droppedFiles);
-}
-
-function showFiles(files) {
-    var exte = files[0].name.split('.')[1];
-    if (exte == 'png' || exte == 'jpg') {
-      fileLabelText.innerText = files[0].name;
-      validFile = true;
-    }
-    else{
-      fileLabelText.innerText = 'File type not allowed. Use either .jpg or .png file.';
-    }
+function truncator(str, length, ending) {
+  if (length == null) {
+    length = 100;
   }
+  if (ending == null) {
+    ending = '...';
+  }
+  if (str.length > length) {
+    return str.substring(0, length - ending.length) + ending;
+  } else {
+    return str;
+  }
+};
 
-function uploadFiles(event) {
+
+
+
+function getText(event) {
   event.preventDefault();
-  if (validFile) {
-  var formData = new FormData();
-
-  for (var i = 0, file; (file = droppedFiles[i]); i++) {
-    formData.append(fileInput.name, file, file.name);
-  }
 
   var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function(data) {
+  xhr.onreadystatechange = function(data) {    
     console.log(xhr.response);
   };
-
-
   xhr.onload = function() {
     var response = JSON.parse(this.responseText);
-    var predictedClass = response.class_name;
-    console.log(predictedClass);
-    if( predictedClass != ''){
-        predictions.textContent = 'Prediction for uploaded image : ' + predictedClass +'.';
-        predictions.style.display = "inline";
-        predictions.style.fontSize = "30px";
-        predictions.style.paddingLeft = "50px";
-    }
-    else{
-        predictions.style.display = "none";
-    }
+    var predictedSentiment = response.prediction;
+    var query = response.query
+    var dict = { 0 : "Happy", 1 : "Neutral", 2: "Sad"}
+
+    console.log(predictedSentiment);
+    if (query != ""){
+      sentiment.style.display = "block";
+      if (query.length < 100){
+        sentiment.innerHTML = "Sentiment for <b>" + query + "</b> is <b>" + dict[predictedSentiment] + "</b>.";
+      }
+      else{
+        sentiment.innerHTML = "Sentiment for <b>" + truncator(query) + "</b> is <b>" + dict[predictedSentiment] + "</b>.";
+      }
+      if (predictedSentiment == 0) {
+        happy.style.filter = "drop-shadow(0 0 0.75rem white)"
+        neutral.style.filter = "None"
+        sad.style.filter = "None"
+      }
+      else if (predictedSentiment == 1){
+        happy.style.filter = "None"
+        neutral.style.filter = "drop-shadow(0 0 0.75rem white)"
+        sad.style.filter = "None"
+      }
+      else{
+        happy.style.filter = "None"
+        neutral.style.filter = "None"
+        sad.style.filter = "drop-shadow(0 0 0.75rem white)"
+      }
+  }
 }
 
-  xhr.open(dropFileForm.method, dropFileForm.action, true);
-  xhr.send(formData);
-  fileLabelText.innerText = "Choose a file or drag it here";
-  dropFileForm.reset();
-  validFile = false;
+  xhr.open(form.method, form.action, true);
+  xhr.send(text.value);
+  text.value = ""
 }
-}
-
-// function changeStatus(text) {
-//   uploadStatus.innerText = text;
-// }
 
 
 

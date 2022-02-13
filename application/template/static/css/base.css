@@ -426,10 +426,10 @@ body {
         display: none;
     }
     .heading {
-        font-size: 8vh;
+        font-size: 6vh;
     }
     .description {
-        font-size: 5vh;
+        font-size: 4vh;
     }
 }
 
@@ -460,36 +460,13 @@ body {
     -webkit-text-fill-color: red;
 }
 
-.happy:hover {
-    filter: drop-shadow(0 0 0.75rem white);
-}
-
-.neutral:hover {
-    filter: drop-shadow(0 0 0.75rem white);
-}
-
-.sad:hover {
-    filter: drop-shadow(0 0 0.75rem white);
+#predictedSentiment {
+    font-size: 3vh;
+    display: None;
 }
 
 
 /* ############################################# */
-
-#ip2 {
-    border-radius: 25px;
-    border: 0.7vh solid rgb(255, 255, 255);
-    padding: 2vh;
-    width: 40vw;
-    height: 8vh;
-    background: transparent;
-    caret-color: #ffffff;
-}
-
-@media screen and (max-width:768px) {
-    #ip2 {
-        width: 70vw;
-    }
-}
 
 .searchbar {
     position: relative;

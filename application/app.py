@@ -30,13 +30,11 @@ def twitterhashtags():
     return render_template("twitterhashtags.html")
 
 @app.route("/", methods = ['POST'])
-def predict():
-    data_dict = request.files.to_dict()
-    if data_dict:
-        image = data_dict['imageFile']
-        image.save('./image.jpg')
-        return jsonify({"class_name": randint(0, 500)})
-    return jsonify({"class_name": ''})
+def sentimentpredict():
+    user_query = request.data.decode("utf-8") 
+    if user_query:
+        return jsonify({"prediction": randint(0,2), "query": user_query})
+    return jsonify({"query": ""})
 
 if __name__ == "__main__":
     app.run(debug=True)

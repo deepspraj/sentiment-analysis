@@ -5,27 +5,29 @@
             <div class="textualpart">
                 <p class="heading">Sentiment Analysis</p>
                 <p class="description">Categorize tweet under Positive, Neutral or Negative</p>
-                <br>
                 <div class="emoji">
+                    <p id="predictedSentiment"><b></b></p>
                     <ul>
-                        <li class="happy"><i class="fas fa-smile" aria-hidden="true"></i></li>
-                        <li class="neutral"><i class="fas fa-meh" aria-hidden="true"></i></li>
-                        <li class="sad"><i class="fas fa-frown" aria-hidden="true"></i></li>
+                        <li class="happy" id="happy"><i class="fas fa-smile" aria-hidden="true"></i></li>
+                        <li class="neutral" id="neutral"><i class="fas fa-meh" aria-hidden="true"></i></li>
+                        <li class="sad" id="sad"><i class="fas fa-frown" aria-hidden="true"></i></li>
                     </ul>
                 </div>
                 <br>
-                <br>
+                <p style="font-size: 2vh;"><b>Note:<br>Please make sure words are separated by space model wont be able to detect sentiment corectly and web-app will become irresponsive.</b></p>
                 <br>
                 <br>
                 <main class="searchbar">
                     <div class="srch_wrpr">
-                        <!-- <input type="checkbox" name="" class="checkbox"> -->
+                        <form id="form" action="{{url_for('sentimentpredict')}}" method="POST" onsubmit="getText(event)" enctype="multipart/form-data">
+                        <input type="checkbox" name="" class="checkbox">
                         <div class="srch_sb_cnt">
-                            <input type="text" name="text_bar" id="" class="sech_txt_inpt" placeholder="Type to search..." />
-                            <button class="srch_btn">
+                            <input type="text" name="text_bar" id="sech_txt_inpt" class="sech_txt_inpt" placeholder="Type to search..." />
+                            <button class="srch_btn" type="submit" value="Upload" class="uploadButton">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </button>
                         </div>
+                        </form>
                     </div>
                 </main>
             </div>
