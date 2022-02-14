@@ -90,7 +90,7 @@ $('.navTrigger').click(function () {
 // Function used to shrink nav bar removing paddings and adding black background
 $(window).scroll(function() {
   if ($(document).scrollTop() > 500) {
-      $('.navBar').addClass('affix');
+      $('.nav').addClass('affix');
       document.getElementById("home").style.color = "#000000";
       if ($(window).width() < 768){
         document.getElementById("sentiment").style.color = "#ffffff";
@@ -104,7 +104,7 @@ $(window).scroll(function() {
         document.getElementById("emotion").style.color = "#000000";
       }
   } else {
-      $('.navBar').removeClass('affix');
+      $('.nav').removeClass('affix');
       document.getElementById("home").style.color = "#ffffff";
       document.getElementById("sentiment").style.color = "#ffffff";
       document.getElementById("emotion").style.color = "#ffffff";
@@ -123,10 +123,19 @@ $(window).scroll(function() {
 
 // ###########################################################
 // pop up script
-// A $( document ).ready() block.
-$(document).ready(function(){
-  $('#exampleModal').modal('show');
+
+$('.button').click(function(event){
+  var buttonId = $(this).attr('id');
+  $('#modal-container').removeAttr('class').addClass(buttonId);
+  $('body').addClass('modal-active');
+  event.preventDefault();
+})
+
+$('#modal-container').click(function(event){
+  $(this).addClass('out');
+  $('body').removeClass('modal-active');
 });
+
 
 
 // audio recorder
