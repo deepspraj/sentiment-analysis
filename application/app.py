@@ -31,10 +31,15 @@ def twitterhashtags():
 
 @app.route("/", methods = ['POST'])
 def sentimentpredict():
-    user_query = request.data.decode("utf-8") 
+    user_query = request.data.decode("utf-8")
+    
     if user_query:
-        return jsonify({"prediction": randint(0,2), "query": user_query})
-    return jsonify({"query": ""})
+        if user_query[0] == '@' and len(user_query) <=16:
+            return jsonify({"query": "It seems that you entered twitter handle here."})
+        elif user_query:
+            return jsonify({"prediction": randint(0,2), "query": user_query})
+    else:
+        return jsonify({"query": ""})
 
 if __name__ == "__main__":
     app.run(debug=True)

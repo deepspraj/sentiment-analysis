@@ -55,6 +55,7 @@ body {
     margin: 0;
     padding: 0;
     margin-right: 8vw;
+    background: transparent;
 }
 
 .nav div.main_list ul li {
@@ -432,6 +433,9 @@ body {
         font-size: 4vh;
     }
 }
+/* ######################################################## */
+/* pop up css */
+
 
 
 /* ############################################ */
@@ -472,7 +476,6 @@ body {
     position: relative;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1;
 }
 .searchbar:before {
     position: absolute;
@@ -658,7 +661,7 @@ input.checkbox:checked ~ .srch_sb_cnt .srch_btn:after {
     margin-left: 10vw;
     margin-right: 10vw;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(2, minmax(400px, 1fr));
     grid-gap: 15vh;
     align-items: stretch;
 }
@@ -693,7 +696,7 @@ input.checkbox:checked ~ .srch_sb_cnt .srch_btn:after {
 }
 
 .grid {
-    margin-top: 20px;
+    margin-top: 10vh;
 }
 
 .header {

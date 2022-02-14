@@ -74,7 +74,8 @@ function getText(event) {
 }
 
 
-
+// ###########################################################
+// navgation bar script
 
 
 $('.navTrigger').click(function () {
@@ -82,16 +83,14 @@ $('.navTrigger').click(function () {
   console.log("Clicked menu");
   $("#mainListDiv").toggleClass("show_list");
   $("#mainListDiv").fadeIn();
-
 });
-
 
 
 
 // Function used to shrink nav bar removing paddings and adding black background
 $(window).scroll(function() {
   if ($(document).scrollTop() > 500) {
-      $('.nav').addClass('affix');
+      $('.navBar').addClass('affix');
       document.getElementById("home").style.color = "#000000";
       if ($(window).width() < 768){
         document.getElementById("sentiment").style.color = "#ffffff";
@@ -105,7 +104,7 @@ $(window).scroll(function() {
         document.getElementById("emotion").style.color = "#000000";
       }
   } else {
-      $('.nav').removeClass('affix');
+      $('.navBar').removeClass('affix');
       document.getElementById("home").style.color = "#ffffff";
       document.getElementById("sentiment").style.color = "#ffffff";
       document.getElementById("emotion").style.color = "#ffffff";
@@ -122,8 +121,12 @@ $(window).scroll(function() {
 });
 
 
-
-
+// ###########################################################
+// pop up script
+// A $( document ).ready() block.
+$(document).ready(function(){
+  $('#exampleModal').modal('show');
+});
 
 
 // audio recorder
@@ -320,8 +323,8 @@ if ( navigator.mediaDevices.getUserMedia ) {
 
 
 
-
-// Audio waveform
+// ####################################################################
+// Audio waveform 
 
 
 for (let i = 0; i < 30; i++) {
