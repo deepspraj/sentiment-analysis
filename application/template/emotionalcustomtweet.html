@@ -3,14 +3,15 @@
     <ul>
         <li>
             <div class="textualpart">
-                <p class="heading">Sentiment Analysis</p>
-                <p class="description">Categorize tweet under Positive, Neutral or Negative</p>
+                <p class="heading">Emotions Analysis</p>
+                <p class="description">Categorize tweet under Positive, Neutral or Negative </p>
                 <div class="emoji">
                     <p id="predictedSentiment"><b></b></p>
                     <ul>
-                        <li class="happy" id="happy"><i class="fas fa-smile" aria-hidden="true"></i></li>
-                        <li class="neutral" id="neutral"><i class="fas fa-meh" aria-hidden="true"></i></li>
-                        <li class="sad" id="sad"><i class="fas fa-frown" aria-hidden="true"></i></li>
+                        <li class="happy">&#128512;</li>
+                        <li class="happy">&#x1F61D;</li>
+                        <li class="happy">&#x1F62A;</li>
+                        <li class="happy">&#x1F621;</li>
                     </ul>
                 </div>
                 <br><br><br>
@@ -29,18 +30,13 @@
                 </main>
             </div>
         </li>
-        <li>
-            <div class="logopart">
-                <p><i class="fab fa-twitter"></i></p>
-            </div>
-        </li>
     </ul>
 </div>
-
 {% endblock %}
 
 {% block rulesregulations %}
-<p>Please make sure that sentence contains whitspace.<br>
-Else sentences will make webapp irresponsive and algorithm wont be able to detect sentiment correctly.
+
+<p>Emotion Page is only for text based sentiment analysis.<br>
+More will be updated later on.
 </p>
 {% endblock %}

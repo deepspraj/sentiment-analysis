@@ -14,8 +14,8 @@
             </div>
             <div id="mainListDiv" class="main_list">
                 <ul class="navlinks">
-                    <li><a href="{{url_for('home') }}" id="sentiment">Sentiment Analysis</a></li>
-                    <li><a href="{{url_for('emotional')}}" id="emotion">Emotion Analysis</a></li>
+                    <li><a href="{{url_for('sentimentCustomTweet') }}" id="sentiment">Sentiment Analysis</a></li>
+                    <li><a href="{{url_for('emotionalCustomTweet')}}" id="emotion">Emotion Analysis</a></li>
                 </ul>
             </div>
             <span class="navTrigger">
@@ -38,35 +38,35 @@
     <div class="container">
         <main class="grid">
             <article>
-                <a href=""><i class="fas fa-cloud-download-alt"></i></a>
+                <a href="{{url_for('sentimentLiveTweet')}}"><i class="fas fa-cloud-download-alt"></i></a>
                 <div class="text">
                     <h3 class="header">Import Live Tweets</h3>
                     <p class="para">You can import live tweets by using targets twitter handle and last 10 tweets will perform sentiment analysis.</p>
                 </div>
             </article>
             <article>
-                <a href=""><i class="fas fa-chart-line"></i></a>
+                <a href="{{url_for('sentimentLiveHashtags')}}"><i class="fas fa-chart-line"></i></a>
                 <div class="text">
                     <h3 class="header">Import Live Hashtags</h3>
                     <p class="para">You can import live top 5 trending hashtag's and every hashtag's 5 latest tweet will perform sentiment analysis.</p>
                 </div>
             </article>
             <article>
-                <a href=""><i class="far fa-keyboard"></i></a>
+                <a href="{{url_for('sentimentCustomTweet')}}"><i class="far fa-keyboard"></i></a>
                 <div class="text">
                     <h3 class="header">Type Your Own Tweet</h3>
                     <p class="para">You can enter your own tweet in raw format and perform sentiment analysis</p>
                 </div>
             </article>
             <article>
-                <a href="{{url_for('audio')}}"><i class="fas fa-volume-up"></i></a>
+                <a href="{{url_for('sentimentAudioAnalysis')}}"><i class="fas fa-volume-up"></i></a>
                 <div class="text">
                     <h3 class="header">Audio as Input</h3>
                     <p class="para">You can record audio here and perform sentiment analysis.</p>
                 </div>
             </article>
             <article>
-                <a href="{{url_for('audioupload')}}"><i class="fas fa-upload"></i></a>
+                <a href="{{url_for('sentimentUploadAudioAnalysis')}}"><i class="fas fa-upload"></i></a>
                 <div class="text">
                     <h3 class="header">Upload Your Audio</h3>
                     <p class="para">You can upload audio (not more than 10 sec) and perform sentiment analysis.</p>
@@ -80,7 +80,7 @@
         <div class="modal-background">
             <div class="modal">
                 <h2>Rules and Regulations</h2>
-                <p>Please make sure words are separated by space model wont be able to detect sentiment corectly and web-app will become irresponsive.</p>
+                {% block rulesregulations %} {% endblock %}
                 <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
                     <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
                 </svg>
@@ -116,6 +116,9 @@
     </div>
     <script src="static/js/jquery-3.6.0.min.js"></script>
     <script start src="static/js/base.js"></script>
+
+    {% block scripts %} {% endblock %}
+
 </body>
 
 </html>

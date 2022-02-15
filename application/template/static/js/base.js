@@ -29,7 +29,8 @@ function truncator(str, length, ending) {
 
 
 function getText(event) {
-  event.preventDefault();
+
+  overrideDefault(event)
 
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function(data) {    
