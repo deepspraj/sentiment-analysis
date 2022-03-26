@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from random import randint
-
-from matplotlib.style import use
+import os
+from twitterapi import Twitter
 
 app = Flask(__name__, template_folder='template', static_folder='template/static')
+
+twitter = Twitter()
 
 
 # Function for landing / home page
@@ -22,14 +24,14 @@ def sentimentCustomTweet():
 @app.route("/sentimentcustomtweet", methods = ['POST'])
 def sentimentCustomTweetPredictor():
     user_query = request.data.decode("utf-8")
-    print(user_query)
     if user_query:
         if user_query[0] == '@' and len(user_query) <=16:
-            return jsonify({"query": "It seems that you entered twitter handle here."})
+            return "True"
         elif user_query:
             return jsonify({"prediction": randint(0,2), "query": user_query})
     else:
         return jsonify({"query": ""})
+    return render_template("sentimentcustomtweet.html")
 
 
 # Function for Custom Tweet or Text Page (Emotions)
@@ -95,6 +97,15 @@ def emotionalUploadAudioAnalysisPredictor():
 # Function for Live Tweet (Sentiment)
 @app.route("/sentimentlivetweet")
 def sentimentLiveTweet():
+    user_name = request.user_data.decode("utf-8")
+    if user_name:
+        if user_name[0] == '@' and len(user_name) <=16:
+            print(twitter.tweets_api(user_name[1:], 10))
+            return "True"
+        elif user_name:
+            return "False"
+    else:
+        return jsonify({"user_name": ""})
     return render_template("sentimentlivetweet.html")
 
 
