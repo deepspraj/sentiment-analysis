@@ -33,7 +33,7 @@ function getText(event) {
   overrideDefault(event)
 
   var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function(user_data) {    
+  xhr.onreadystatechange = function(data) {    
     console.log(xhr.response);
   };
   xhr.onload = function() {

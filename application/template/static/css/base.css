@@ -1298,3 +1298,34 @@ a.float:hover + div.label-container{
     visibility: visible;
     opacity: 1;
 }
+
+
+/* live tweet sentiment table show  */
+
+#table2
+{
+    width: 40vw;
+    height: 60vh;
+    overflow: auto;
+    display: none;
+}
+
+@media screen and (max-width:768px) {
+
+    #table2
+    {
+        width: 100%;
+        height: 60vh;
+        overflow: auto;
+        display: none;
+    }
+
+
+}
+
+
+/* live tweet emoji size */
+
+#emojis{
+    font-size: 5vw;
+}

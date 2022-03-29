@@ -4,7 +4,17 @@ var happy = document.getElementById('happy');
 var neutral = document.getElementById('neutral');
 var sad = document.getElementById('sad');
 var sentiment = document.getElementById('predictedSentiment');
+var description = document.getElementById('description');
+var emoji = document.getElementById('emoji');
+var searchbar = document.getElementById('searchbar');
+var table2 = document.getElementById('table2');
+var headingElement = document.getElementById('heading');
 
+
+
+var emojis = ['<span class="happy" id="emojis"><i class="fas fa-smile" aria-hidden="true"></i></span>',
+              '<span class="neutral" id="emojis"><i class="fas fa-meh" aria-hidden="true"></i></span>', 
+              '<span class="sad" id="emojis"><i class="fas fa-frown" aria-hidden="true"></i></span>'];
 
 function overrideDefault(event) {
   event.preventDefault();
@@ -28,7 +38,7 @@ function truncator(str, length, ending) {
 
 
 
-function getText(event) {
+function getUserName(event) {
 
   overrideDefault(event)
 
@@ -38,38 +48,70 @@ function getText(event) {
   };
   xhr.onload = function() {
     var response = JSON.parse(this.responseText);
-    var predictedSentiment = response.prediction;
-    var query = response.query
     var dict = { 0 : "Happy", 1 : "Neutral", 2: "Sad"}
+    if (response){
+      description.style.display  = "none";
+      emoji.style.display  = "none";
+      searchbar.style.display  = "none";
+      table2.style.display  = "block";
 
-    console.log(predictedSentiment);
-    if (query != ""){
-      sentiment.style.display = "block";
-      if (query.length < 100){
-        sentiment.innerHTML = "Sentiment for <b>" + query + "</b> is <b>" + dict[predictedSentiment] + "</b>.";
+      
+
+      var tweets = [];
+      for(var k in response) tweets.push(k);
+      
+      var value =[];
+      for(var k in response) value.push(response[k]);
+      console.log(value);
+
+      var items = ['Tweets', "Sentiment"]; 
+
+      var tableDiv = document.getElementById("table2"); 
+      var table = document.createElement('TABLE');
+      var tbody= document.createElement('TBODY');  
+      var tr = document.createElement('TR');
+
+      table.appendChild(tbody);
+
+      //create header
+      tbody.appendChild(tr);
+
+      var heading = ["Tweets", "Sentiment"];
+
+        for (var col = 0; col<heading.length; col++)
+        {
+          var th = document.createElement('TH');
+          th.style.color = "#ffffff";
+          th.width = table2.clientWidth;
+          th.style.paddingBottom = "15px";
+          th.appendChild(document.createTextNode(heading[col]));
+          tr.appendChild(th);
+        }
+
+
+
+      for (var f=0; f<tweets.length; f++)
+      {
+      var tr = document.createElement('TR'); 
+            var td1 = document.createElement('TD');
+            var td2 = document.createElement('TD');
+            td2.style.textAlign = "center";
+            td1.style.color = "#ffffff";
+            td2.style.color = "#ffffff";
+            td1.style.paddingBottom = "15px";
+            td2.style.paddingBottom = "15px";
+                td1.appendChild(document.createTextNode(tweets[f]));
+                td2.innerHTML = emojis[value[f] - 1] ;
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tbody.appendChild(tr);
       }
-      else{
-        sentiment.innerHTML = "Sentiment for <b>" + truncator(query) + "</b> is <b>" + dict[predictedSentiment] + "</b>.";
+        tableDiv.appendChild(table);
       }
-      if (predictedSentiment == 0) {
-        happy.style.filter = "drop-shadow(0 0 0.75rem white)"
-        neutral.style.filter = "None"
-        sad.style.filter = "None"
-      }
-      else if (predictedSentiment == 1){
-        happy.style.filter = "None"
-        neutral.style.filter = "drop-shadow(0 0 0.75rem white)"
-        sad.style.filter = "None"
-      }
-      else{
-        happy.style.filter = "None"
-        neutral.style.filter = "None"
-        sad.style.filter = "drop-shadow(0 0 0.75rem white)"
-      }
+    
   }
-}
-
   xhr.open(form.method, form.action, true);
   xhr.send(text.value);
+  headingElement.innerHTML = "Sentiment Analysis for " + text.value;
   text.value = ""
 }

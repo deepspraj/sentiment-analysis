@@ -11,7 +11,7 @@ class Twitter:
         self.auth = tweepy.OAuthHandler(config['twitter']['api_key'], config['twitter']['api_key_secret'])
         self.auth.set_access_token(config['twitter']['access_token'], config['twitter']['access_token_secret'])
 
-    def __tweets_puller(self, username="", count=10):
+    def __tweets_puller(self, username, count=10):
         tweets_list = []
 
         api = tweepy.API(self.auth)
@@ -26,3 +26,8 @@ class Twitter:
 
     def tweets_api(self, user, limit):
         return self.__tweets_puller(user, limit)
+
+
+if __name__ == "__main__":
+    twitter = Twitter()
+    print(twitter.tweets_api("aramco", 10))

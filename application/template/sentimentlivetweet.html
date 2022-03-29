@@ -3,9 +3,10 @@
     <ul>
         <li>
             <div class="textualpart">
-                <p class="heading">Sentiment Analysis</p>
-                <p class="description">Categorize tweet under Positive, Neutral or Negative</p>
-                <div class="emoji">
+                <p class="heading" id="heading">Sentiment Analysis</p>
+                <div id="table2"></div>
+                <p class="description" id="description">Categorize tweet under Positive, Neutral or Negative</p>
+                <div class="emoji" id="emoji">
                     <p id="predictedSentiment"><b></b></p>
                     <ul>
                         <li class="happy" id="happy"><i class="fas fa-smile" aria-hidden="true"></i></li>
@@ -14,9 +15,9 @@
                     </ul>
                 </div>
                 <br><br><br>
-                <main class="searchbar">
+                <main class="searchbar" id="searchbar">
                     <div class="srch_wrpr">
-                        <form id="form" action="{{url_for('sentimentLiveTweet')}}" method="POST" onsubmit="getUserName(event)" enctype="multipart/form-data">
+                        <form id="form" action="{{url_for('sentimentLiveTweetPredictor')}}" method="POST" onsubmit="getUserName(event)" enctype="multipart/form-data">
                         <input type="checkbox" name="" class="checkbox">
                         <div class="srch_sb_cnt">
                             <input type="text" name="text_bar" id="sech_txt_inpt" class="sech_txt_inpt" placeholder="@deepspraj..." />
@@ -46,6 +47,5 @@ Else sentences will make webapp irresponsive and algorithm wont be able to detec
 {% endblock %}
 
 {% block scripts %}
-
-
+<script start src="static/js/sentimentlivetweet.js" defer></script>
 {% endblock %}

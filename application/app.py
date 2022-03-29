@@ -7,7 +7,6 @@ app = Flask(__name__, template_folder='template', static_folder='template/static
 
 twitter = Twitter()
 
-
 # Function for landing / home page
 @app.route("/")
 def home():
@@ -97,21 +96,24 @@ def emotionalUploadAudioAnalysisPredictor():
 # Function for Live Tweet (Sentiment)
 @app.route("/sentimentlivetweet")
 def sentimentLiveTweet():
-    user_name = request.user_data.decode("utf-8")
-    if user_name:
-        if user_name[0] == '@' and len(user_name) <=16:
-            print(twitter.tweets_api(user_name[1:], 10))
-            return "True"
-        elif user_name:
-            return "False"
-    else:
-        return jsonify({"user_name": ""})
     return render_template("sentimentlivetweet.html")
 
 
 # Function for Live Tweet Predictions (Sentiment)
-@app.route("/sentimentlivetweet")
+@app.route("/sentimentlivetweet", methods = ['POST'])
 def sentimentLiveTweetPredictor():
+    sentiment = {}
+    user_name = request.data.decode("utf-8")
+    if user_name:
+        if user_name[0] == '@' and len(user_name) <=16:
+            all_tweets = twitter.tweets_api(user_name[1:], 10)
+            for tweet in all_tweets:
+                sentiment[tweet] = randint(1,3)
+            return jsonify(sentiment)
+        elif user_name:
+            return jsonify(sentiment)
+    else:
+        return jsonify(sentiment)
     return jsonify({"sentimentlivetweet": ""})
 
 
